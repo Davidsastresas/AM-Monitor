@@ -15,10 +15,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         src/cpp/main.cpp \
-        src/cpp/AM_MonitorApp/AM_MonitorApp.cpp 
+        src/cpp/AM_MonitorApp/AM_MonitorApp.cpp \
 
 HEADERS += \
-        src/cpp/AM_MonitorApp/AM_MonitorApp.h 
+        src/cpp/AM_MonitorApp/AM_MonitorApp.h \
+        Mavlink/mavlink/ardupilotmega/mavlink.h
 
 RESOURCES += src/qml/qml.qrc
 

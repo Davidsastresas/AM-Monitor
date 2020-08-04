@@ -4,6 +4,7 @@
 #include <QTimer>
 #include <QQmlApplicationEngine>
 #include <QElapsedTimer>
+#include "../../../Mavlink/mavlink/ardupilotmega/mavlink.h"
 
 // #include "MAVLinkProtocol.h"
 
