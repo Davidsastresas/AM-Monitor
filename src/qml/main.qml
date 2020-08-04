@@ -10,5 +10,6 @@ MainWindow {
     // all flags must be set at once! Check docs for
     // al the possibilities, some of them interesting 
     
-    // flags: Qt.WindowStaysOnTopHint	
+    flags: Qt.WindowStaysOnTopHint
+    // flags: Qt.FramelessWindowHint	
 }
