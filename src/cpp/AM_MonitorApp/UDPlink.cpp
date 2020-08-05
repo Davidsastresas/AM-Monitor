@@ -15,18 +15,6 @@ UDPlink::UDPlink(QObject *parent) :
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
-void UDPlink::HelloUDP()
-{
-    QByteArray Data;
-    Data.append("Hello from UDP");
-    
-    // Sends the datagram datagram 
-    // to the host address and at port.
-    // qint64 QUdpSocket::writeDatagram(const QByteArray & datagram, 
-    //                      const QHostAddress & host, quint16 port)
-    socket->writeDatagram(Data, QHostAddress::LocalHost, 14400);
-}
-
 void UDPlink::readyRead()
 {
     // when data comes in

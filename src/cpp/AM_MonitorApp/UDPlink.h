@@ -9,7 +9,6 @@ class UDPlink : public QObject
     Q_OBJECT
 public:
     explicit UDPlink(QObject *parent = 0);
-    void HelloUDP();
 signals:
     
 public slots:

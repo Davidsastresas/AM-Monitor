@@ -13,6 +13,7 @@ AM_MonitorApp::~AM_MonitorApp()
 {
     // Place shutdown code in _shutdown
     _app = nullptr;
+    _link = nullptr;
 }
 
 void AM_MonitorApp::_shutdown()
@@ -25,7 +26,7 @@ void AM_MonitorApp::_shutdown()
 
 void AM_MonitorApp::_initCommon()
 {
-
+    _link = new UDPlink();
 }
 
 
