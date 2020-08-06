@@ -11,13 +11,49 @@ Window {
     width:                          640
     height:                         480
 
-    minimumHeight:                  200
+    minimumHeight:                  150
     minimumWidth:                   500
 
     color:                          "#212329"
 
     property var buttonradius:      6
     property var toolbarmargin:     width * 0.015
+
+    property bool isontop:          true
+
+    function toggleontop() {
+        if (isontop) {
+            moveresize()
+        } else if (!isontop) {
+            stayontop()
+        } else {
+            moveresize()
+        }
+    }
+
+    function stayontop() {
+        mainWindow.flags = Qt.WindowStaysOnTopHint
+    }
+
+    function moveresize() {
+        mainWindow.flags ^= Qt.WindowStaysOnTopHint
+    }
+
+    Button {
+        id:                 flagsButton
+        anchors.left:       parent.left
+        anchors.top:        parent.top
+        anchors.margins:    height * 0.2
+
+        width:              height
+        height:             topBar.height * 0.3
+
+        z:                  topBar.z + 2
+
+        onClicked:          mainWindow.toggleontop()
+
+    }
+
     Rectangle { 
         id:                 topBar
 
