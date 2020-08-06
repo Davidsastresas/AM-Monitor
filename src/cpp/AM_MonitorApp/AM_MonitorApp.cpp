@@ -26,15 +26,13 @@ void AM_MonitorApp::_shutdown()
 void AM_MonitorApp::_initCommon()
 {
     // start objects here
-    _vehiclemanager = new VehicleManager();
+    // _vehiclemanager = new VehicleManager();
 
     // now connect signals
 
 }
 
-
-/// @brief Returns the AM_MonitorApp object singleton.
-AM_MonitorApp* PfinderApp(void)
+AM_MonitorApp* am_monitorapp(void)
 {
     return AM_MonitorApp::_app;
 }

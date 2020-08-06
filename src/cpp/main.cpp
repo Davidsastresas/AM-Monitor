@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "AM_MonitorApp/AM_MonitorApp.h"
+#include "AM_MonitorApp/VehicleManager.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +16,9 @@ int main(int argc, char *argv[])
 
     // feed qml resources to the engine
     engine.addImportPath("qrc:/qml");
+    
+    VehicleManager vehiclemanager;
+    engine.rootContext()->setContextProperty("vehiclemanagerobject", &vehiclemanager);
 
     // init app
     app._initCommon();

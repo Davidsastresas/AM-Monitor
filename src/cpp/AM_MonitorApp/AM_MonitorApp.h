@@ -33,8 +33,8 @@ private:
 
     QElapsedTimer           _msecsElapsedTime;
 
-    VehicleManager*         _vehiclemanager;
+    // VehicleManager*         _vehiclemanager;
 };
 
 /// @brief Returns the AM_MonitorApp object singleton.
-AM_MonitorApp* qgcApp(void);
+AM_MonitorApp* am_monitorapp(void);
