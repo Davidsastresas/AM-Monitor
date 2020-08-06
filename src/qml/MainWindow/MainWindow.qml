@@ -118,6 +118,11 @@ Window {
             border.width:           width * 0.1
             border.color:           "#53585B"
 
+            Text {
+                text: vehiclemanagerobject.example
+                color: "white"
+            }
+
         }
 
         Rectangle {
