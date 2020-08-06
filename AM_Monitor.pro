@@ -17,12 +17,14 @@ SOURCES += \
         src/cpp/main.cpp \
         src/cpp/AM_MonitorApp/AM_MonitorApp.cpp \
         src/cpp/AM_MonitorApp/UDPlink.cpp \
-        src/cpp/AM_MonitorApp/VehicleManager.cpp
+        src/cpp/AM_MonitorApp/VehicleManager.cpp \
+        src/cpp/AM_MonitorApp/Vehicle.cpp
 
 HEADERS += \
         src/cpp/AM_MonitorApp/AM_MonitorApp.h \
         src/cpp/AM_MonitorApp/UDPlink.h \
         src/cpp/AM_MonitorApp/VehicleManager.h \
+        src/cpp/AM_MonitorApp/Vehicle.h \
         Mavlink/mavlink/ardupilotmega/mavlink.h  
 
 
