@@ -56,12 +56,12 @@ build_script:
 #  - 'cd %APPVEYOR_BUILD_FOLDER% && "C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\symstore.exe" add /compress /s symbols /f %SHADOW_BUILD_DIR%\release\qgroundcontrol.exe /t qgroundcontrol'
 #  - ps: 'cd $env:appveyor_build_folder; .\deploy\lowercaseify_symbolstore.ps1'
 
-test_script:
-  - if "%CONFIG%" EQU "debug" ( %SHADOW_BUILD_DIR%\debug\qgroundcontrol --unittest )
+# test_script:
+#   - if "%CONFIG%" EQU "debug" ( %SHADOW_BUILD_DIR%\debug\qgroundcontrol --unittest )
 
 artifacts:
   - path: AM_Monitor.exe
-    name: qgcinstaller
+    name: am_monitorinstaller
   - path: build_windows_install\release\AM_Monitor.pdb
     name: pdb
 
