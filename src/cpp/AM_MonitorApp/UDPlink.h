@@ -11,9 +11,13 @@ public:
     explicit UDPlink(QObject *parent = 0);
 signals:
     void readBytes(QByteArray bytes);
+    void connected();
+    void disconnected();
     
 public slots:
     void readyRead();
+    void sconnected() { emit connected(); }
+    void sdisconnected() { emit disconnected(); }
 
 private:
     QUdpSocket *socket;

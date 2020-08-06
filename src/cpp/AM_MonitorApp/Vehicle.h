@@ -16,6 +16,13 @@ public:
 
     void set_mavid(int mavid);
 
+    void initialize();
+
+    bool initialized();
+
+    void set_instance(int instance);
+
+    int get_instance();
 
     int get_mavid();
 
@@ -28,6 +35,8 @@ public slots:
 
 private:
 
+    int _instancenumber = 0;
+    bool _initialized = false;
     int _mavid = 0;
     int _gsm1 = 200;
 

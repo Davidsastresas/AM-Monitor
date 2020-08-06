@@ -9,6 +9,8 @@ UDPlink::UDPlink(QObject *parent) :
     socket->bind(QHostAddress::LocalHost, 14400);
     
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect(socket, SIGNAL(connected()), this, SLOT(sconnected()));
+    connect(socket, SIGNAL(disconnected()), this, SLOT(sdisconnected()));
 }
 
 void UDPlink::readyRead()
