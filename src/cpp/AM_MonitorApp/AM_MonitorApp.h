@@ -4,8 +4,8 @@
 #include <QTimer>
 #include <QQmlApplicationEngine>
 #include <QElapsedTimer>
-#include "../../../Mavlink/mavlink/ardupilotmega/mavlink.h"
-#include "UDPlink.h"
+// #include "../../../Mavlink/mavlink/ardupilotmega/mavlink.h"
+#include "VehicleManager.h"
 
 // #include "MAVLinkProtocol.h"
 
@@ -33,7 +33,7 @@ private:
 
     QElapsedTimer           _msecsElapsedTime;
 
-    UDPlink*                _link;
+    VehicleManager*         _vehiclemanager;
 };
 
 /// @brief Returns the AM_MonitorApp object singleton.

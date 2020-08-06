@@ -10,6 +10,7 @@ class UDPlink : public QObject
 public:
     explicit UDPlink(QObject *parent = 0);
 signals:
+    void readBytes(QByteArray bytes);
     
 public slots:
     void readyRead();

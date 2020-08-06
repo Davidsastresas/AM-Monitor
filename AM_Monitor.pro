@@ -16,11 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/cpp/main.cpp \
         src/cpp/AM_MonitorApp/AM_MonitorApp.cpp \
-        src/cpp/AM_MonitorApp/UDPlink.cpp
+        src/cpp/AM_MonitorApp/UDPlink.cpp \
+        src/cpp/AM_MonitorApp/VehicleManager.cpp
 
 HEADERS += \
         src/cpp/AM_MonitorApp/AM_MonitorApp.h \
         src/cpp/AM_MonitorApp/UDPlink.h \
+        src/cpp/AM_MonitorApp/VehicleManager.h \
         Mavlink/mavlink/ardupilotmega/mavlink.h  
 
 
