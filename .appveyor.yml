@@ -45,7 +45,7 @@ install:
 build_script:
   - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
   - cd %SHADOW_BUILD_DIR% && %QT_JOM_DIR%\jom
-  - cd %QT_QMAKE_DIR"\windeployqt -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
+  - call %QT_QMAKE_DIR"\windeployqt -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
   - if "%CONFIG%" EQU "installer" ( copy %SHADOW_BUILD_DIR%\release\AM_Monitor.exe %APPVEYOR_BUILD_FOLDER%\AM_Monitor.exe )
 # Generate the source server information to embed in the PDB
 # Temporarily disabled while we try to figure out where this is located on appveyor image
