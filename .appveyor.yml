@@ -1,6 +1,6 @@
 version: '{branch}-{build}'
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 build:
   verbosity: minimal
@@ -45,7 +45,10 @@ install:
 build_script:
   - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
   - cd %SHADOW_BUILD_DIR% && %QT_JOM_DIR%\jom
-  - call C:\Qt\5.15.0\msvc2019_64\bin\windeployqt -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
+  - Remove-Item "%SHADOW_BUILD_DIR%\release\*.o"
+  - Remove-Item "%SHADOW_BUILD_DIR%\release\*.cpp"
+  - Remove-Item "%SHADOW_BUILD_DIR%\release\*.h"
+  - call C:\Qt\5.15.0\msvc2019_64\bin\windeployqt.exe -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
   
   - ps: Compress-Archive -Path "$env:SHADOW_BUILD_DIR\release\*" -DestinationPath "$env:APPVEYOR_BUILD_FOLDER\release.zip"
 # Generate the source server information to embed in the PDB
