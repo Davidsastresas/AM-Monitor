@@ -1,6 +1,6 @@
 version: '{branch}-{build}'
 
-image: VisualStudio 2019
+image: Visual Studio 2019
 
 build:
   verbosity: minimal
