@@ -46,6 +46,7 @@ build_script:
   - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
   - cd %SHADOW_BUILD_DIR% && %QT_JOM_DIR%\jom
   - del "%SHADOW_BUILD_DIR%\release\*.o"
+  - del "%SHADOW_BUILD_DIR%\release\*.obj"
   - del "%SHADOW_BUILD_DIR%\release\*.cpp"
   - del "%SHADOW_BUILD_DIR%\release\*.h"
   - call C:\Qt\5.15.0\msvc2019_64\bin\windeployqt.exe -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
