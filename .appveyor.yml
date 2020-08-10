@@ -18,7 +18,7 @@ install:
   - git submodule update --init --recursive
   - mkdir %LOCALAPPDATA%\QtProject && copy test\qtlogging.ini %LOCALAPPDATA%\QtProject\
   - ps: |
-          $env:Path = $env:Path;%QT_MAKE_DIR%;%QT_QMAKE_DIR%;%QT_MINGW_DIR%
+          $env:Path = $env:Path;C:\Qt\Tools\QtCreator\bin;C:\Qt\Tools\mingw810_64\bin;C:\Qt\5.15.0\mingw81_64\bin
   # - ps: |
   #     Write-Host "Installing Qt..." -ForegroundColor Cyan
   #     $qt7zPath = "$($env:USERPROFILE)\Qt-5.10.0.7z"
