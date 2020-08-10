@@ -1,6 +1,6 @@
 version: '{branch}-{build}'
 
-image: Visual Studio 2017
+image: MinGW 8.1.0
 
 build:
   verbosity: minimal
@@ -10,12 +10,11 @@ environment:
   - BUILD: 'Release'
     CONFIG: installer
     SHADOW_BUILD_DIR: C:\projects\qgroundcontrol\build_windows_install
-    QT_JOM_DIR: C:\Qt-QGC-5.12.6\Tools\QtCreator\bin
-    QT_QMAKE_DIR: C:\Qt-QGC-5.12.6\5.12.6\msvc2017_64\bin
+    QT_MAKE_DIR: C:\Qt\Tools\QtCreator\bin
+    QT_QMAKE_DIR: C:\Qt\5.15.0\mingw81_64\bin
 
 install:
   - git submodule update --init --recursive
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - mkdir %LOCALAPPDATA%\QtProject && copy test\qtlogging.ini %LOCALAPPDATA%\QtProject\
   - ps: |
       Write-Host "Installing Qt..." -ForegroundColor Cyan
@@ -44,7 +43,7 @@ install:
 
 build_script:
   - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
-  - cd %SHADOW_BUILD_DIR% && %QT_JOM_DIR%\jom
+  - cd %SHADOW_BUILD_DIR% && %QT_MAKE_DIR%\mingw32-make.exe
   - if "%CONFIG%" EQU "installer" ( copy %SHADOW_BUILD_DIR%\release\AM_Monitor.exe %APPVEYOR_BUILD_FOLDER%\AM_Monitor.exe )
 # Generate the source server information to embed in the PDB
 # Temporarily disabled while we try to figure out where this is located on appveyor image
