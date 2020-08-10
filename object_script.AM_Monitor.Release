@@ -1,0 +1,10 @@
+release/main.o
+release/AM_MonitorApp.o
+release/UDPlink.o
+release/VehicleManager.o
+release/Vehicle.o
+release/qrc_qml.o
+release/moc_AM_MonitorApp.o
+release/moc_UDPlink.o
+release/moc_VehicleManager.o
+release/moc_Vehicle.o
