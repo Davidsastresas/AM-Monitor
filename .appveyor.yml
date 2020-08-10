@@ -48,7 +48,7 @@ install:
 
 build_script:
   - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
-  - cd %SHADOW_BUILD_DIR% && %QT_MAKE_DIR%\mingw32-make.exe
+  - cd %SHADOW_BUILD_DIR% && %QT_MINGW_DIR%\mingw32-make.exe
   - if "%CONFIG%" EQU "installer" ( copy %SHADOW_BUILD_DIR%\release\AM_Monitor.exe %APPVEYOR_BUILD_FOLDER%\AM_Monitor.exe )
 
 # Generate the source server information to embed in the PDB
