@@ -62,7 +62,7 @@ build_script:
 #   - if "%CONFIG%" EQU "debug" ( %SHADOW_BUILD_DIR%\debug\qgroundcontrol --unittest )
 
 artifacts:
-  - path: AM_Monitor.exe
+  - path: release.zip
     name: am_monitorinstaller
   - path: build_windows_install\release\AM_Monitor.pdb
     name: pdb
