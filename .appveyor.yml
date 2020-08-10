@@ -17,6 +17,8 @@ environment:
 install:
   - git submodule update --init --recursive
   - mkdir %LOCALAPPDATA%\QtProject && copy test\qtlogging.ini %LOCALAPPDATA%\QtProject\
+  - set QTDIR=C:\Qt\5.10.1\msvc2017_64
+  - set PATH=%QTDIR%\bin;C:\Qt\Tools\mingw530_32\bin;%PATH%;
   - ps: |
           $env:PATH = $env:PATH;"C:\Qt\Tools\QtCreator\bin";"C:\Qt\Tools\mingw810_64\bin";"C:\Qt\5.15.0\mingw81_64\bin";
   # - ps: |
