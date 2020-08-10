@@ -47,8 +47,12 @@ install:
   #     Write-Host "Installed" -ForegroundColor Green
 
 build_script:
-  - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
+  - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
   - cd %SHADOW_BUILD_DIR% && %QT_MINGW_DIR%\mingw32-make.exe
+  - Remove-Item ".\release\*.o"
+  - Remove-Item ".\release\*.cpp"
+  - Remove-Item ".\release\*.h"
+  - $QT_QMAKE_DIR%\windeployqt.exe -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
   - if "%CONFIG%" EQU "installer" ( copy %SHADOW_BUILD_DIR%\release\AM_Monitor.exe %APPVEYOR_BUILD_FOLDER%\AM_Monitor.exe )
 
 # Generate the source server information to embed in the PDB
