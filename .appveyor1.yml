@@ -1,6 +1,6 @@
 version: '{branch}-{build}'
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 build:
   verbosity: minimal
@@ -10,21 +10,25 @@ environment:
   - BUILD: 'Release'
     CONFIG: installer
     SHADOW_BUILD_DIR: C:\projects\qgroundcontrol\build_windows_install
-    QT_JOM_DIR: C:\Qt-QGC-5.12.6\Tools\QtCreator\bin
-    QT_QMAKE_DIR: C:\Qt-QGC-5.12.6\5.12.6\msvc2017_64\bin
+    QT_MAKE_DIR: C:\Qt\Tools\QtCreator\bin
+    QT_MINGW_DIR: C:\Qt\Tools\mingw810_64\bin
+    QT_QMAKE_DIR: C:\Qt\5.15.0\mingw81_64\bin
 
 install:
   - git submodule update --init --recursive
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - mkdir %LOCALAPPDATA%\QtProject && copy test\qtlogging.ini %LOCALAPPDATA%\QtProject\
+  - set QTDIR=C:\Qt\5.10.1\msvc2017_64
+  - set PATH=%QTDIR%\bin;C:\Qt\Tools\mingw530_32\bin;%PATH%;
   - ps: |
-      Write-Host "Installing Qt..." -ForegroundColor Cyan
-      $qt7zPath = "$($env:USERPROFILE)\Qt-QGC-5.12.6.7z"
-      Write-Host "Downloading..."
-      (New-Object Net.WebClient).DownloadFile('https://qgroundcontrol.s3-us-west-2.amazonaws.com/dependencies/Qt-QGC-5.12.6.7z', $qt7zPath)
-      Write-Host "Unzipping..."
-      cmd /c start /wait 7z x $qt7zPath -oC:\
-      Write-Host "Installed" -ForegroundColor Green
+          $env:PATH = $env:PATH;"C:\Qt\Tools\QtCreator\bin";"C:\Qt\Tools\mingw810_64\bin";"C:\Qt\5.15.0\mingw81_64\bin";
+  # - ps: |
+  #     Write-Host "Installing Qt..." -ForegroundColor Cyan
+  #     $qt7zPath = "$($env:USERPROFILE)\Qt-5.10.0.7z"
+  #     Write-Host "Downloading..."
+  #     (New-Object Net.WebClient).DownloadFile('https://qgroundcontrol.s3-us-west-2.amazonaws.com/dependencies/Qt-QGC-5.12.6.7z', $qt7zPath)
+  #     Write-Host "Unzipping..."
+  #     cmd /c start /wait 7z x $qt7zPath -oC:\
+  #     Write-Host "Installed" -ForegroundColor Green
   # - ps: |
   #     Write-Host "Installing GStreamer..." -ForegroundColor Cyan
   #     $msiPath = "$($env:USERPROFILE)\gstreamer-1.0-x86_64-1.14.4.msi"
@@ -43,9 +47,14 @@ install:
   #     Write-Host "Installed" -ForegroundColor Green
 
 build_script:
-  - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake -r CONFIG+=%CONFIG% CONFIG+=WarningsAsErrorsOn %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
-  - cd %SHADOW_BUILD_DIR% && %QT_JOM_DIR%\jom
+  - mkdir %SHADOW_BUILD_DIR% && cd %SHADOW_BUILD_DIR% && %QT_QMAKE_DIR%\qmake %APPVEYOR_BUILD_FOLDER%\AM_Monitor.pro
+  - cd %SHADOW_BUILD_DIR% && %QT_MINGW_DIR%\mingw32-make.exe
+  - Remove-Item ".\release\*.o"
+  - Remove-Item ".\release\*.cpp"
+  - Remove-Item ".\release\*.h"
+  - $QT_QMAKE_DIR%\windeployqt.exe -qmldir %APPVEYOR_BUILD_FOLDER%\src\qml\ %SHADOW_BUILD_DIR%\release\AM_Monitor.exe
   - if "%CONFIG%" EQU "installer" ( copy %SHADOW_BUILD_DIR%\release\AM_Monitor.exe %APPVEYOR_BUILD_FOLDER%\AM_Monitor.exe )
+
 # Generate the source server information to embed in the PDB
 # Temporarily disabled while we try to figure out where this is located on appveyor image
 #  - '"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\srcsrv\srctool.exe" -r -u "%SHADOW_BUILD_DIR%\release\qgroundcontrol.pdb" | grep qgroundcontrol | grep -v moc_ | grep -v libs\\mavlink | grep -v build_windows_install | python %APPVEYOR_BUILD_FOLDER%\deploy\genPDBsrcsrv.py > %SHADOW_BUILD_DIR%\release\qgroundcontrol.pdb.srcsrv'
