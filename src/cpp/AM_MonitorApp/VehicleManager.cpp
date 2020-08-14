@@ -122,6 +122,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _glowvolt = false;
+                _gcurrentlythrot = false;
+                _glowvolthasocurred = false;
+                _ghasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _glowvolt = true;
             else
@@ -138,11 +147,11 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _ghasbeenthrot = true;
             else
                 _ghasbeenthrot = false;
-
             break;
         }
 
         case 1 : {
+            _v1mavid = msg.sysid;
             _v1gsm1 = mavlink_msg_radio_status_get_rssi(&msg); 
             _v1gsm2 = mavlink_msg_radio_status_get_remrssi(&msg); 
             _v1gsm3 = mavlink_msg_radio_status_get_txbuf(&msg);
@@ -166,6 +175,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _v1lowvolt = false;
+                _v1currentlythrot = false;
+                _v1lowvolthasocurred = false;
+                _v1hasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _v1lowvolt = true;
             else
@@ -182,11 +200,11 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _v1hasbeenthrot = true;
             else
                 _v1hasbeenthrot = false;
-
             break;
         }
 
         case 2 : {
+            _v2mavid = msg.sysid;
             _v2gsm1 = mavlink_msg_radio_status_get_rssi(&msg); 
             _v2gsm2 = mavlink_msg_radio_status_get_remrssi(&msg); 
             _v2gsm3 = mavlink_msg_radio_status_get_txbuf(&msg);
@@ -210,6 +228,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _v2lowvolt = false;
+                _v2currentlythrot = false;
+                _v2lowvolthasocurred = false;
+                _v2hasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _v2lowvolt = true;
             else
@@ -226,11 +253,11 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _v2hasbeenthrot = true;
             else
                 _v2hasbeenthrot = false;
-
             break;
         }
 
         case 3 : {
+            _v3mavid = msg.sysid;
             _v3gsm1 = mavlink_msg_radio_status_get_rssi(&msg); 
             _v3gsm2 = mavlink_msg_radio_status_get_remrssi(&msg); 
             _v3gsm3 = mavlink_msg_radio_status_get_txbuf(&msg);
@@ -254,6 +281,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _v3lowvolt = false;
+                _v3currentlythrot = false;
+                _v3lowvolthasocurred = false;
+                _v3hasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _v3lowvolt = true;
             else
@@ -270,11 +306,11 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _v3hasbeenthrot = true;
             else
                 _v3hasbeenthrot = false;
-
             break;
         }
 
         case 4 : {
+            _v4mavid = msg.sysid;
             _v4gsm1 = mavlink_msg_radio_status_get_rssi(&msg); 
             _v4gsm2 = mavlink_msg_radio_status_get_remrssi(&msg); 
             _v4gsm3 = mavlink_msg_radio_status_get_txbuf(&msg);
@@ -298,6 +334,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _v4lowvolt = false;
+                _v4currentlythrot = false;
+                _v4lowvolthasocurred = false;
+                _v4hasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _v4lowvolt = true;
             else
@@ -314,11 +359,11 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _v4hasbeenthrot = true;
             else
                 _v4hasbeenthrot = false;
-
             break;
         }
 
         case 5 : {
+            _v5mavid = msg.sysid;
             _v5gsm1 = mavlink_msg_radio_status_get_rssi(&msg); 
             _v5gsm2 = mavlink_msg_radio_status_get_remrssi(&msg); 
             _v5gsm3 = mavlink_msg_radio_status_get_txbuf(&msg);
@@ -342,6 +387,15 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
 
             uint8_t sysbitmask = mavlink_msg_radio_status_get_noise(&msg);
 
+            if ( sysbitmask == 255 ) {
+                _v5lowvolt = false;
+                _v5currentlythrot = false;
+                _v5lowvolthasocurred = false;
+                _v5hasbeenthrot = false;
+
+                break;
+            }
+
             if ( sysbitmask & (1 << 0) ) 
                 _v5lowvolt = true;
             else
@@ -358,7 +412,6 @@ void VehicleManager::process_msg(mavlink_message_t &msg)
                 _v5hasbeenthrot = true;
             else
                 _v5hasbeenthrot = false;
-
             break;
         }
 

@@ -27,6 +27,7 @@ public:
     Q_PROPERTY(bool glowvolt  READ glowvolt   NOTIFY telemchanged);
     Q_PROPERTY(bool glowvolthasocurred  READ glowvolthasocurred   NOTIFY telemchanged);
     
+    Q_PROPERTY(int v1mavid  READ v1mavid   NOTIFY telemchanged);
     Q_PROPERTY(int v1gsmused  READ v1gsmused   NOTIFY telemchanged);
     Q_PROPERTY(int v1gsm1  READ v1gsm1   NOTIFY telemchanged);
     Q_PROPERTY(int v1gsm2  READ v1gsm2   NOTIFY telemchanged);
@@ -41,6 +42,7 @@ public:
     Q_PROPERTY(bool v1lowvolt  READ v1lowvolt   NOTIFY telemchanged);
     Q_PROPERTY(bool v1lowvolthasocurred  READ v1lowvolthasocurred   NOTIFY telemchanged);
     
+    Q_PROPERTY(int v2mavid  READ v2mavid   NOTIFY telemchanged);
     Q_PROPERTY(int v2gsmused  READ v2gsmused   NOTIFY telemchanged);
     Q_PROPERTY(int v2gsm1  READ v2gsm1   NOTIFY telemchanged);
     Q_PROPERTY(int v2gsm2  READ v2gsm2   NOTIFY telemchanged);
@@ -55,6 +57,7 @@ public:
     Q_PROPERTY(bool v2lowvolt  READ v2lowvolt   NOTIFY telemchanged);
     Q_PROPERTY(bool v2lowvolthasocurred  READ v2lowvolthasocurred   NOTIFY telemchanged);
 
+    Q_PROPERTY(int v3mavid  READ v2mavid   NOTIFY telemchanged);
     Q_PROPERTY(int v3gsmused  READ v3gsmused   NOTIFY telemchanged);
     Q_PROPERTY(int v3gsm1  READ v3gsm1   NOTIFY telemchanged);
     Q_PROPERTY(int v3gsm2  READ v3gsm2   NOTIFY telemchanged);
@@ -69,6 +72,7 @@ public:
     Q_PROPERTY(bool v3lowvolt  READ v3lowvolt   NOTIFY telemchanged);
     Q_PROPERTY(bool v3lowvolthasocurred  READ v3lowvolthasocurred   NOTIFY telemchanged);
 
+    Q_PROPERTY(int v4mavid  READ v4mavid   NOTIFY telemchanged);
     Q_PROPERTY(int v4gsmused  READ v4gsmused   NOTIFY telemchanged);
     Q_PROPERTY(int v4gsm1  READ v4gsm1   NOTIFY telemchanged);
     Q_PROPERTY(int v4gsm2  READ v4gsm2   NOTIFY telemchanged);
@@ -83,6 +87,7 @@ public:
     Q_PROPERTY(bool v4lowvolt  READ v4lowvolt   NOTIFY telemchanged);
     Q_PROPERTY(bool v4lowvolthasocurred  READ v4lowvolthasocurred   NOTIFY telemchanged);
 
+    Q_PROPERTY(int v5mavid  READ v5mavid   NOTIFY telemchanged);
     Q_PROPERTY(int v5gsmused  READ v5gsmused   NOTIFY telemchanged);
     Q_PROPERTY(int v5gsm1  READ v5gsm1   NOTIFY telemchanged);
     Q_PROPERTY(int v5gsm2  READ v5gsm2   NOTIFY telemchanged);
@@ -113,6 +118,7 @@ public:
     bool glowvolt() { return _glowvolt;} 
     bool glowvolthasocurred() { return _glowvolthasocurred;}
 
+    int v1mavid() { return _v1mavid; }
     int v1gsmused() { return _v1gsmused; }
     int v1gsm1() { return _v1gsm1; }
     int v1gsm2() { return _v1gsm2; }
@@ -127,6 +133,7 @@ public:
     bool v1lowvolt() { return _v1lowvolt;} 
     bool v1lowvolthasocurred() { return _v1lowvolthasocurred;}
 
+    int v2mavid() { return _v2mavid; }
     int v2gsmused() { return _v2gsmused; }
     int v2gsm1() { return _v2gsm1; }
     int v2gsm2() { return _v2gsm2; }
@@ -141,6 +148,7 @@ public:
     bool v2lowvolt() { return _v2lowvolt;} 
     bool v2lowvolthasocurred() { return _v2lowvolthasocurred;}
 
+    int v3mavid() { return _v3mavid; }
     int v3gsmused() { return _v3gsmused; }
     int v3gsm1() { return _v3gsm1; }
     int v3gsm2() { return _v3gsm2; }
@@ -155,6 +163,7 @@ public:
     bool v3lowvolt() { return _v3lowvolt;} 
     bool v3lowvolthasocurred() { return _v3lowvolthasocurred;}
 
+    int v4mavid() { return _v4mavid; }
     int v4gsmused() { return _v4gsmused; }
     int v4gsm1() { return _v4gsm1; }
     int v4gsm2() { return _v4gsm2; }
@@ -169,6 +178,7 @@ public:
     bool v4lowvolt() { return _v4lowvolt;} 
     bool v4lowvolthasocurred() { return _v4lowvolthasocurred;}
 
+    int v5mavid() { return _v5mavid; }
     int v5gsmused() { return _v5gsmused; }
     int v5gsm1() { return _v5gsm1; }
     int v5gsm2() { return _v5gsm2; }
@@ -210,6 +220,7 @@ private:
     bool _glowvolt = false;
     bool _glowvolthasocurred = false;
 
+    int _v1mavid = 0; 
     int _v1gsmused = 0; 
     int _v1gsm1 = 0; 
     int _v1gsm2 = 0; 
@@ -224,6 +235,7 @@ private:
     bool _v1lowvolt = false;
     bool _v1lowvolthasocurred = false;
 
+    int _v2mavid = 0;
     int _v2gsmused = 0; 
     int _v2gsm1 = 0; 
     int _v2gsm2 = 0; 
@@ -238,6 +250,7 @@ private:
     bool _v2lowvolt = false;
     bool _v2lowvolthasocurred = false;
 
+    int _v3mavid = 0;
     int _v3gsmused = 0; 
     int _v3gsm1 = 0; 
     int _v3gsm2 = 0; 
@@ -252,6 +265,7 @@ private:
     bool _v3lowvolt = false;
     bool _v3lowvolthasocurred = false;
 
+    int _v4mavid = 0;
     int _v4gsmused = 0; 
     int _v4gsm1 = 0; 
     int _v4gsm2 = 0; 
@@ -266,6 +280,7 @@ private:
     bool _v4lowvolt = false;
     bool _v4lowvolthasocurred = false;
 
+    int _v5mavid = 0;
     int _v5gsmused = 0; 
     int _v5gsm1 = 0; 
     int _v5gsm2 = 0; 

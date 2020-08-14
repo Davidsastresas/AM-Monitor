@@ -340,7 +340,7 @@ Window {
                     anchors.centerIn:               parent
                     // anchors.margins:            mainWindow.toolbarmargin
 
-                    text: "UAV 1"
+                    text: "UAV " + vehiclemanagerobject.v1mavid
                     color: "white"
                 }
             }
@@ -578,7 +578,7 @@ Window {
                     anchors.centerIn:               parent
                     // anchors.margins:            mainWindow.toolbarmargin
 
-                    text: "UAV 2"
+                    text: "UAV " + vehiclemanagerobject.v2mavid
                     color: "white"
                 }
             }
@@ -816,7 +816,7 @@ Window {
                     anchors.centerIn:               parent
                     // anchors.margins:            mainWindow.toolbarmargin
 
-                    text: "UAV 3"
+                    text: "UAV " + vehiclemanagerobject.v3mavid
                     color: "white"
                 }
             }
@@ -1054,7 +1054,7 @@ Window {
                     anchors.centerIn:               parent
                     // anchors.margins:            mainWindow.toolbarmargin
 
-                    text: "UAV 4"
+                    text: "UAV " + vehiclemanagerobject.v4mavid
                     color: "white"
                 }
             }
@@ -1292,7 +1292,7 @@ Window {
                     anchors.centerIn:               parent
                     // anchors.margins:            mainWindow.toolbarmargin
 
-                    text: "UAV 5"
+                    text: "UAV " + vehiclemanagerobject.v5mavid
                     color: "white"
                 }
             }
